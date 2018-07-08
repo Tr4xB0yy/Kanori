@@ -31,7 +31,7 @@ module.exports = class HelpCommand extends Command {
 	}
 
 	async run(msg, args) { // eslint-disable-line complexity
-		if (!args.command || args.command == "") {
+		if (!args.command || args.command === "") {
       var cmdArray = msg.client.registry.commands.array()
       var embed = new RichEmbed ()
       .setTitle("Kanori Help")
