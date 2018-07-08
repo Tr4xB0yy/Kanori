@@ -45,7 +45,7 @@ class MuteCommand extends Command {
               permissions: []
             }).then(async (role) => {
               muteRole = role;
-              await message.guild.channels.forEach(async (channel)=> {
+              await message.guild.channels.forEach(async (channel) => {
                 await channel.overwritePermissions(role, {
                   SEND_MESSAGES: false,
                   ADD_REACTIONS: false

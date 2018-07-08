@@ -46,7 +46,6 @@ module.exports = class HelpCommand extends Command {
 
           removedcmds.push(command)
         } 
-      var v = 0
       var tamanho = cmdArray.length
       for (var v = 0; cmdArray.length > 0; v++) {
         var info1 = "dot"

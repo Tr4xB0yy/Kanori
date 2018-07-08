@@ -27,7 +27,7 @@ class MessageSCommand extends Command {
     var awa = await msg.channel.send("Searching.")
       var msgs = msg.channel.fetchMessage(id)
       if (!msgs) return msg.channel.send("I don't found a message with that ID on this channel.");
-    var message = msgs
+      var message = msgs
         msg.channel.createWebhook(message.author.username, message.author.displayAvatarURL).then(hook => {
           awa.delete()
           return hook.send(message.content)
