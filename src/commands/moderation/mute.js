@@ -32,9 +32,9 @@ class MuteCommand extends Command {
     msg.channel.send("⚠️ You are about to mute `"+ user.user.tag +"` by "+ time +" minutes of your server! If you really want mute this user, react this message with ✅, or ❌ to cancel.").then(message => {
       message.react("✅");
       message.react("❌");
-      var collector = message.createReactionCollector((r, u) => (r.emoji.name == "❌" || r.emoji.name == "✅") && u.id == msg.author.id);
-      collector.on('collect', r => {
-        if (r.emoji.name == "✅") {
+      var collector = message.createReactionCollector((r, u) => (r.emoji.name === "❌" || r.emoji.name === "✅") && u.id == msg.author.id);
+      collector.on('collect', (r) => {
+        if (r.emoji.name === "✅") {
           try {
             user.user.send("You got muted from "+ msg.guild.name +"!\n**Reason:** `"+ reason +"`\n**Time:** "+ time +" minute\(s\)");
           } catch(a) {}
@@ -63,7 +63,7 @@ class MuteCommand extends Command {
             }, time);
             collector.stop();
           } catch (e) { msg.channel.send("🙅 Sorry, i can't mute that user! Probably "+ user.user.username +" have a higher role than mine..."); collector.stop(); }
-        } else if (r.emoji.name == "❌") {
+        } else if (r.emoji.name === "❌") {
           message.delete();
           msg.channel.send("Ok! Canceled.");
           collector.stop();

@@ -27,8 +27,8 @@ class BanCommand extends Command {
     msg.channel.send("⚠️ You are about to ban `"+ user.user.tag +"` of your server! If you really want ban, react this message with ✅, or ❌ to cancel.").then(message => {
       message.react("✅");
       message.react("❌");
-      var collector = message.createReactionCollector((r, u) => (r.emoji.name == "❌" || r.emoji.name == "✅") && u.id == msg.author.id);
-      collector.on('collect', r => {
+      var collector = message.createReactionCollector((r, u) => (r.emoji.name === "❌" || r.emoji.name === "✅") && u.id == msg.author.id);
+      collector.on('collect', (r) => {
        if (r.emoji.name == "✅") {
          try {
            user.user.send("You got banned from "+ msg.guild.name +"!\n**Reason:** `"+ reason +"`");
@@ -36,7 +36,7 @@ class BanCommand extends Command {
          user.ban("Banned by "+ msg.author.tag +" | "+ reason);
          msg.channel.send(user.user.tag +" got banned for `"+ reason +"` by `"+ msg.author.tag +"`!");
          collector.stop();
-       } else if (r.emoji.name == "❌") {
+       } else if (r.emoji.name === "❌") {
          msg.channel.send("Ok! Canceled.");
          collector.stop();
        }
