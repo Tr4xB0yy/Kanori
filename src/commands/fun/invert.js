@@ -26,6 +26,6 @@ class InvertCommand extends Command {
       msg.channel.send({ files: [{ attachment: link.body, name: 'invert.jpg' }]});
     });
   }
-};
+}
 
 module.exports = InvertCommand;

@@ -34,6 +34,6 @@ class MessageSCommand extends Command {
         });
   
   }
-};
+}
 
 module.exports = MessageSCommand;

@@ -124,4 +124,4 @@ module.exports = class HelpCommand extends Command {
       msg.channel.send(embed)
     }
 	}
-};
+}

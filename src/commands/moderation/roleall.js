@@ -53,6 +53,6 @@ class RoleAllCommand extends Command {
       });
     });
   }
-};
+}
 
 module.exports = RoleAllCommand;

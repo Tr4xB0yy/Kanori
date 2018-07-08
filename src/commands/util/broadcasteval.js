@@ -55,6 +55,6 @@ class BEvalCommand extends Command {
       msg.channel.send("😣 The shards are unavaliable now! Try again later. (Or another kind of error happen, check your console!)");
     }
   }
-};
+}
 
 module.exports = BEvalCommand;

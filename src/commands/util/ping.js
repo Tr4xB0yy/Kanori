@@ -41,4 +41,4 @@ module.exports = class PingCommand extends Command {
       msg.channel.send("<:PingPongOreo:465557434728185876> | **Pong!** `"+ Math.round(msg.client.ping) +"`ms (Shard **"+ parseInt(parseInt(msg.client.shard.id) + parseInt(1)) +"**/"+ process.env.SHARDCOUNT+")");
     }
   }
-};
+}

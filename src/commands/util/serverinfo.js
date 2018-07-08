@@ -34,6 +34,6 @@ class ServerInfoCommand extends Command {
     .addField("Roles in this server", "```"+ cleanRoles.join(', ') +"```")
     return msg.channel.send(embed);
   }
-};
+}
 
 module.exports = ServerInfoCommand;

@@ -44,6 +44,6 @@ class SoftbanCommand extends Command {
       });
     });
   }
-};
+}
 
 module.exports = SoftbanCommand;

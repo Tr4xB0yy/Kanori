@@ -29,6 +29,6 @@ class StatsCommand extends Command {
     });
     });
   }
-};
+}
 
 module.exports = StatsCommand;

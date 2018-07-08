@@ -27,6 +27,6 @@ class ContinuaCommand extends Command {
       msg.channel.send({ files: [{ attachment: link.body, name: 'tobecontinued.jpg' }]});
     });
   }
-};
+}
 
 module.exports = ContinuaCommand;

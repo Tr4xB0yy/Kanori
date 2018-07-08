@@ -26,6 +26,6 @@ class BeautifulCommand extends Command {
       msg.channel.send({ files: [{ attachment: link.body, name: 'beautiful.jpg' }]});
     });
   }
-};
+}
 
 module.exports = BeautifulCommand;

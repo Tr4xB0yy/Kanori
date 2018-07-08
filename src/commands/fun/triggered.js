@@ -26,6 +26,6 @@ class TriggeredCommand extends Command {
       msg.channel.send({ files: [{ attachment: link.body, name: 'triggered.gif' }]});
     });
   }
-};
+}
 
 module.exports = TriggeredCommand;

@@ -43,6 +43,6 @@ class BanCommand extends Command {
       });
     });
   }
-};
+}
 
 module.exports = BanCommand;

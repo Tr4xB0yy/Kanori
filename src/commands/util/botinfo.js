@@ -21,6 +21,6 @@ class BotInfoCommand extends Command {
     .setColor(0xFF00F0)
     msg.channel.send(embed)
   }
-};
+}
 
 module.exports = BotInfoCommand;
