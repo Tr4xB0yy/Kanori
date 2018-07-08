@@ -1,6 +1,9 @@
 # Heya, I'm Kanori.
 
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2a9743b1e99c4a7e8a311cc88fb0b332)](https://www.codacy.com/app/BlueSlimee/Kanori?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BlueSlimee/Kanori&amp;utm_campaign=Badge_Grade) 
+![Travis](https://img.shields.io/travis/BlueSlimee/Kanori.svg?style=for-the-badge)
+[![Discord Bots](https://discordbots.org/api/widget/servers/461552010240589824.svg?noavatar=true)](https://discordbots.org/bot/461552010240589824) 
+[![Discord Bots](https://discordbots.org/api/widget/owner/461552010240589824.svg?noavatar=true)](https://discordbots.org/bot/461552010240589824)
 [![Discord Bots](https://discordbots.org/api/widget/461552010240589824.svg)](https://discordbots.org/bot/461552010240589824)
 
 *I'm a simple moderation, for-fun and utility bot. Quality is the most important point of Kanori. The source-code must be ***PERFECT***, and workaround isn't allowed.*
