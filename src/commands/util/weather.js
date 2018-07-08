@@ -26,6 +26,6 @@ class WeatherCommand extends Command {
       });
     });
   }
-};
+}
 
 module.exports = WeatherCommand;

@@ -37,6 +37,6 @@ class MutedCommand extends Command {
     }
     msg.channel.send(embed)
   }
-};
+}
 
 module.exports = MutedCommand;

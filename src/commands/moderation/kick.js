@@ -45,6 +45,6 @@ class KickCommand extends Command {
       });
     });
   }
-};
+}
 
 module.exports = KickCommand;

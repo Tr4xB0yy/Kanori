@@ -37,4 +37,4 @@ module.exports = class ReloadCommandCommand extends Command {
       return  msg.channel.send("CanvasCommand instance reloaded. Loading buffers...")
     }
 	}
-};
+}

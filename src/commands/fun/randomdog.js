@@ -26,6 +26,6 @@ class DogCommand extends Command {
       return msg.channel.send(embed);
     });
   }
-};
+}
 
 module.exports = DogCommand;

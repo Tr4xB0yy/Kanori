@@ -77,6 +77,6 @@ class GiveawayCommand extends Command {
       }, timea);
      });
    }
-};
+}
 
 module.exports = GiveawayCommand;

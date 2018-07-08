@@ -26,6 +26,6 @@ class SayCommand extends Command {
     var phase = args.text;
     return msg.say(phase)
   }
-};
+}
 
 module.exports = SayCommand;

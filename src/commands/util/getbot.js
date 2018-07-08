@@ -28,7 +28,7 @@ class BotCommand extends Command {
     var embed = new RichEmbed ()
     embed.setColor(0xFF00F0)
     msg.client.dbl.getBot(id).then(dblbot => {
-      snek.get("https://listcord.com/api/bot/"+ id).then(bot => {
+      snek.get("https://listcord.com/api/bot/"+ id).then((bot) => {
         if (dblbot.username && bot.body.username && !list) return msg.channel.send("I found this bot on DBL and Listcord, so...\nUse `k.getbot "+ id +" listcord` to get ListCord profile...\nOr `dbl` to get dbl profile.");
      
         if (!dblbot || list == "listcord") {
@@ -49,6 +49,6 @@ class BotCommand extends Command {
       });
     });
   }
-};
+}
 
 module.exports = BotCommand

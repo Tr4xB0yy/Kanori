@@ -34,6 +34,6 @@ class UserInfoCommand extends Command {
     .addField("Status", userStats)
     return msg.channel.send(embed);
   }
-};
+}
 
 module.exports = UserInfoCommand;

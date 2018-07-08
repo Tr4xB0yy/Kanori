@@ -23,6 +23,6 @@ class AvatarCommand extends Command {
     var embed = new RichEmbed().setTitle(user.username +"'s avatar").setImage(user.avatarURL).setColor(0xFF0090)
     msg.channel.send(embed);
   }
-};
+}
 
 module.exports = AvatarCommand

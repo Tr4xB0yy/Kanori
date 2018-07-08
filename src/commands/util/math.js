@@ -31,6 +31,6 @@ class MathCommand extends Command {
       msg.channel.send("Invalid operation!");
     }
   }
-};
+}
 
 module.exports = MathCommand;
