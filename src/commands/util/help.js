@@ -112,15 +112,15 @@ module.exports = class HelpCommand extends Command {
       } else {
         permissions = permissions.join(', ')
       }
-      var embed = new RichEmbed ()
+      var embed2 = new RichEmbed ()
       .setTitle("Help for command "+ dm.name)
       .setDescription(dm.description)
       .setColor("RANDOM")
       .addField('Category: `'+ dm.groupID +'`', '**Aliases:** `'+ aliases +'`')
       .addField('Permissions required: `'+ permissions +'`', '**Examples:** `'+ examples +'`');
-      if (dm.guildOnly) embed.setFooter("This command ("+ dm.name +") cannot be used on direct messages!")
-      else embed.setFooter("This command ("+ dm.name +") can be used on direct messages and guilds!");
-      msg.channel.send(embed)
+      if (dm.guildOnly) embed2.setFooter("This command ("+ dm.name +") cannot be used on direct messages!")
+      else embed2.setFooter("This command ("+ dm.name +") can be used on direct messages and guilds!");
+      msg.channel.send(embed2)
     }
 	}
 }
