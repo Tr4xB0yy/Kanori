@@ -193,11 +193,11 @@ class CanvasCommands {
     
     return canvas.toBuffer()
   }
-  static async xvideos (text, image) {
+  static async xvideos (text, imageurl) {
     var canvas = createCanvas(1513, 1080)
     var ctx = canvas.getContext('2d')
     var src = await loadImage(xvideos)
-    var { body: image } = await get(image)
+    var { body: image } = await get(imageurl)
     var img = await loadImage(image)
     ctx.drawImage(src, 0, 0)
     ctx.font = '50px "Roboto" Black'
