@@ -25,3 +25,6 @@ class WebsiteLoader {
 }
 
 module.exports = WebsiteLoader
+
+// Now, we need export our express app to use it on DBL Webhook system
+exports.app = app

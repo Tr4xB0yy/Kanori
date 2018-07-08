@@ -25,7 +25,11 @@ class MathCommand extends Command {
   }
   async run (msg, args) {
     var op = args.op;
+    try {
     return msg.channel.send("`"+ op +"` = `"+ math.eval(op) +"`!");
+    } catch (e) {
+      msg.channel.send("Invalid operation!");
+    }
   }
 };
 

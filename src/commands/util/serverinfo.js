@@ -13,6 +13,16 @@ class ServerInfoCommand extends Command {
     });
   }
   async run (msg) {
+    var cleanRoles = []
+    var roles = msg.guild.roles.array()
+    for (var i = 0; i < msg.guild.roles.array().length; i++) {
+      if (cleanRoles.join(', ').length > 1000) {
+        cleanRoles.pop()
+        cleanRoles.push("etc")
+        break
+      }
+      cleanRoles.push(roles[i].name)
+    }
     var embed = new RichEmbed ()
     .setTitle(msg.guild.name +"'s info")
     .setThumbnail(msg.guild.iconURL)
@@ -21,7 +31,7 @@ class ServerInfoCommand extends Command {
     .addField("Joined at", msg.guild.createdAt)
     .addField("I joined here at", msg.member.joinedAt)
     .addField("Member count", msg.guild.members.size)
-    .addField("Roles in this server", "```"+ msg.guild.roles.map(roles => roles.name).join(', ') +"```")
+    .addField("Roles in this server", "```"+ cleanRoles.join(', ') +"```")
     return msg.channel.send(embed);
   }
 };

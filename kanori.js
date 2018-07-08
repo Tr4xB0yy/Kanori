@@ -3,10 +3,11 @@
   I'm a moderation bot & utils built with Commando Framework!
 */
 var { Client, FriendlyError } = require('discord.js-commando');
-var path = require('path')
+var path = require('path');
 var { RichEmbed } = require('discord.js');
 const MongoClient = require('mongodb').MongoClient;
 const MongoDBProvider = require('commando-provider-mongo');
+var snekfetch = require('snekfetch')
 
 console.log('Loading Kanori client...');
 
@@ -19,14 +20,14 @@ CanvasClient.loadResources().then(msg => {
 });
 
 // Loading NSFW Check API
-var NSFW = require ('/app/src/util/NSFWCheck')
-var NSFWCheck = new NSFW()
+var NSFW = require ('/app/src/util/NSFWCheck');
+var NSFWCheck = new NSFW();
 
-var PluginManager = require ('/app/src/util/PluginManager')
-var manager = new PluginManager()
-manager.loadPlugins()
+var PluginManager = require ('/app/src/util/PluginManager');
+var manager = new PluginManager();
+manager.loadPlugins();
 
-var botlist = require('/app/src/util/BotList')
+var botlist = require('/app/src/util/BotList');
 
 var client = new Client({
   owner: "201710904612618240",
@@ -49,11 +50,19 @@ client.registry.registerGroups([
   .registerDefaultGroups()
   .registerDefaultCommands({ 'ping': false, 'reload': false, 'help': false})
   .registerCommandsIn(path.join(__dirname, 'src/commands'));
-
+function generate (type, url) {
+  snekfetch.get("https://triggered-api.tk/api/v2/"+ type +"?url="+ url).set({ Authorization: process.env.TRIGGEREDTOKEN }).then(r => {
+    return r
+  });
+}
+var obj = {
+  generate: generate
+}
 client.on('ready', () => {
   console.log("Kanori is online! Yay!");
   client.user.setActivity("anime | @Kanori help", { type: "WATCHING" });
-  console.log("Posting stats to DBL and Listcord")
+  console.log("Posting stats to DBL and Listcord");
+  client.triggered = obj
   var botlistClient = new botlist({ client: client });
 })
 .on('error', console.error)

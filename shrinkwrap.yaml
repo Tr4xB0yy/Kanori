@@ -14,6 +14,7 @@ dependencies:
   mongodb: 2.2.35
   os-utils: 0.0.14
   sqlite: 2.9.2
+  triggered-module-api: 0.1.1
   weather-js: 2.0.0
 packages:
   /abbrev/1.1.1:
@@ -1766,6 +1767,12 @@ packages:
       node: '>=0.8'
     resolution:
       integrity: sha512-TZ6TTfI5NtZnuyy/Kecv+CnoROnyXn2DN97LontgQpCwsX2XyLYCC0ENhYkehSOwAp8rTQKc/NUIF7BkQ5rKLA==
+  /triggered-module-api/0.1.1:
+    dependencies:
+      snekfetch: 3.6.4
+    dev: false
+    resolution:
+      integrity: sha512-NrAEe3P2zM/NAsMhXBcCJ2/lPlCJ7eHXobvIhBeyjdEmXSqJeKG/YtjOh/8eU3nGE+r1bebUkVE9+FPzewyFnw==
   /tunnel-agent/0.6.0:
     dependencies:
       safe-buffer: 5.1.2
@@ -1946,4 +1953,5 @@ specifiers:
   mongodb: ^2.2
   os-utils: ^0.0.14
   sqlite: ^2.9.2
+  triggered-module-api: ^0.1.1
   weather-js: ^2.0.0

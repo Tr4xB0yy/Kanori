@@ -3,6 +3,7 @@ var { createCanvas, loadImage, Image, registerFont } = require('canvas');
 var { get } = require('snekfetch');
 var fs = require('fs');
 require('./CanvasUtils')
+
 var textApply = (canvas, text, tamanho, font, type, tamanh) => {
   var size = tamanh;
   if (!type) type = "";
@@ -290,7 +291,3 @@ class CanvasCommands {
 }
 
 module.exports = CanvasCommands
-/*// CanvasCommands.loadResources();
-
-/*m/*//*mdule.exports = CanvasCommands;/*)//
-*/

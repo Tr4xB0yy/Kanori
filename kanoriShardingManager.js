@@ -1,7 +1,7 @@
 var { ShardingManager } = require("discord.js");
 var x = 0;
-var website = require('./src/util/WebsiteLoader')
-var kanoriWebsite = new website()
+var Website = require('./src/util/WebsiteLoader')
+var kanoriWebsite = new Website()
 var kanoriManager = new ShardingManager('./kanori.js', { totalShards: 2, respawn: true });
 
 console.log("Loading Kanori shards...");
@@ -11,10 +11,9 @@ kanoriManager.on('launch', (shard) => {
 });
 
 kanoriManager.on('message', (shard, msg) => {
-  console.log("Message from shard "+ shard.id +":\n\n"+ msg)
+  console.log("Eval for Shard "+ shard.id +":\nEvaluted: "+ msg._eval +"\nResult: "+ msg._result)
 });
 
 kanoriManager.spawn().then(() => {
-  console.log("Success spawning shard "+ x);
-  x++
+  console.log("Success spawning all shard");
 });
