@@ -4,6 +4,8 @@
 ![Travis](https://img.shields.io/travis/BlueSlimee/Kanori.svg?style=for-the-badge)
 [![Discord Bots](https://discordbots.org/api/widget/servers/461552010240589824.svg?noavatar=true)](https://discordbots.org/bot/461552010240589824) 
 [![Discord Bots](https://discordbots.org/api/widget/owner/461552010240589824.svg?noavatar=true)](https://discordbots.org/bot/461552010240589824)
+
+
 [![Discord Bots](https://discordbots.org/api/widget/461552010240589824.svg)](https://discordbots.org/bot/461552010240589824)
 
 *I'm a simple moderation, for-fun and utility bot. Quality is the most important point of Kanori. The source-code must be ***PERFECT***, and workaround isn't allowed.*
