@@ -24,27 +24,16 @@ class MessageSCommand extends Command {
   }
   async run (msg, args) {
     var id = args.text;
-    var x = 0
-    var guildChannels = await msg.client.guilds.get(msg.guild.id).channels
-    var awa = await msg.channel.send("Searching... Loops are cool.")
-    guildChannels.forEach(async channel =>{
-      if (channel.type == 'text') {
-      var msgs = channel.fetchMessages()
-      msgs.forEach(async message => {
-      if (message.id == id) {
-        msg.channel.createWebhook(message.member.nickname, message.author.avatarURL).then(hook => {
+    var awa = await msg.channel.send("Searching.")
+      var msgs = msg.channel.fetchMessage(id)
+      if (!msgs) return msg.channel.send("I don't found a message with that ID on this channel.");
+    var message = msgs
+        msg.channel.createWebhook(message.author.username, message.author.displayAvatarURL).then(hook => {
           awa.delete()
           return hook.send(message.content)
-          x = x++
         });
-        awa.edit("I don't found this message on <#"+ channel.id +">, let's try another channel.");
-      }
-    });
-      }
-    });
-    setTimeout(() => { if (x == 0) msg.channel.send('I don\'t found this message on this guild!'); }, 10000);
   
-    }
+  }
 };
 
 module.exports = MessageSCommand;

@@ -25,7 +25,8 @@
     "dblapi.js": "^2.1.0",
     "listcord": "^1.0.0",
     "os-utils": "^0.0.14",
-    "cats-js": "^1.0.2"
+    "cats-js": "^1.0.2",
+    "triggered-module-api": "^0.1.1"
   },
   "engines": {
     "node": "10.x"
