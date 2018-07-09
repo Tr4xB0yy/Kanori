@@ -29,12 +29,14 @@ manager.loadPlugins();
 
 var botlist = require('/app/src/util/BotList');
 
+
 var client = new Client({
   owner: "201710904612618240",
   commandPrefix: "k.",
   unknownCommandResponse: false,
   disableEveryone: true
 });
+
 
 client.setProvider(
     MongoClient.connect(process.env.MONGOURI).then(cliente =>
@@ -50,25 +52,19 @@ client.registry.registerGroups([
   .registerDefaultGroups()
   .registerDefaultCommands({ 'ping': false, 'reload': false, 'help': false})
   .registerCommandsIn(path.join(__dirname, 'src/commands'));
-function generate (type, url) {
-  snekfetch.get("https://triggered-api.tk/api/v2/"+ type +"?url="+ url).set({ Authorization: process.env.TRIGGEREDTOKEN }).then(r => {
-    return r
-  });
-}
-var obj = {
-  generate: generate
-}
 client.on('ready', () => {
   console.log("Kanori is online! Yay!");
   client.user.setActivity("anime | @Kanori help", { type: "WATCHING" });
+  var Database = require('./src/util/UserDB')
+  var database = new Database({ uri: process.env.MONGOURI })
+  client.db = database
   console.log("Posting stats to DBL and Listcord");
-  client.triggered = obj
   var botlistClient = new botlist({ client: client });
 })
 .on('error', console.error)
 .on('warn', console.warn)
 .on('message', msg => {
-  if (msg.content.startsWith('<@'+ client.user.id +'>') && !msg.content.split(' ')[1]) {
+  if (msg.content.startsWith('<@'+ client.user.id +'>') && !msg.content.split(" ").slice(1).join(" ")) {
     msg.channel.send(":wave: | Heya, my name is Kanori.\nFor help, use `@Kanori help`\nFor info, use `@Kanori botinfo`");
   }
 })
@@ -84,6 +80,27 @@ client.on('ready', () => {
     .setDescription("**Hey! I checked "+ member.user.tag +" avatar and i found NSFW on it! Please do something.**\n\n**Avatar Link:** [Click Here]("+ member.user.displayAvatarURL +")")
     .setColor(0xFF0000)
     if (result == "adult") return member.guild.channels.get("425865939691765760").send("<@354233941550694400>", { embed });
+  });
+})
+.on('messageDelete', (msg) => {
+  if (!msg.mentions.users.first()) return;
+  var alreadyCheck = []
+  msg.mentions.users.forEach(async (user) => {
+    if (!alreadyCheck.includes(user.id) && user.id !== msg.author.id) {
+      var userPfp = await client.db.getUser(user.id)
+      if (userPfp.mentionWarn) {
+        var embed = new RichEmbed()
+        .setTitle("Someone mention you and deleted it!")
+        .setColor(0xFF0000)
+        .setThumbnail(msg.author.displayAvatarURL)
+        .setDescription("**Message content**\n"+ msg.content)
+        .addField("User: `"+ msg.author.tag +"("+ msg.author.id +")`", "Guild: `"+ msg.guild.name +"`")
+        try {
+          client.users.get(user.id).send(embed)
+        } catch (e) {}
+        alreadyCheck.push(user.id)
+      }
+    }
   });
 })
 .on('disconnect', () => console.log("Kanori got disconnected! Trying to reconnecting."))
