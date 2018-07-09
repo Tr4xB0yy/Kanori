@@ -23,6 +23,7 @@ class ColorRoleCommand extends Command {
     });
   }
   async run (msg, { role, color }) {
+      color = color.toUpperCase()
       role.edit({ color: color }).then(role => {
         msg.channel.send("Success! The new color of `"+ role.name +"` is "+ role.color +"!");
       });

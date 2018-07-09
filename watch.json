@@ -9,7 +9,7 @@
     "exclude": [
       "^public/",
       "^dist/"
-    ],
+    ], 
     "include": [
       "\\.js$",
       "\\.json"
