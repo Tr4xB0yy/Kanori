@@ -31,6 +31,30 @@ var userSchema = new mongoose.Schema({
   }
 })
 
+var serverSchema = new mongoose.Schema({
+  eventLog: {
+    type: Boolean,
+    default: false
+  },
+  eventLogChannel: {
+    type: String,
+    default: "no"
+  },
+  antiMassPing: {
+    type: Boolean,
+    default: false
+  },
+  _id: {
+    type: String
+  },
+  bwf: {
+    type: Array,
+    default: []
+  }
+})
+
 var modelUsers = mongoose.model("users", userSchema)
+var modelGuilds = mongoose.model("guilds", serverSchema)
 
 exports.users = modelUsers
+exports.guilds = modelGuilds

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-var { users } = require ('./MongoSchemas')
+var { users, guilds } = require ('./MongoSchemas')
 class UserDB {
   constructor (opt = {}) {
     if (!opt.uri) throw new ReferenceError("No Mongo URI passed to this class.")
@@ -45,6 +45,41 @@ class UserDB {
         if (e) return rej(e)
         if (!d) return res(false)
         else return res(true)
+      });
+    });
+  }
+  getGuild (id) {
+    return new Promise (function (res, rej) {
+      guilds.findOne({ _id: id }, function (e, d) {
+        if (e) return rej(e)
+        if (!d) {
+          var guild = new guilds({
+            _id: id
+          });
+          guild.save()
+          return res(guild)
+        }
+        res(d)
+      })
+    });
+  }
+  hasGuild (id) {
+    return new Promise(function (res, rej) {
+      guilds.findOne({ _id: id }, function (e, d) {
+        if (e) return rej(e)
+        if (!d) return res(false)
+        else return res(true)
+      });
+    });
+  }
+  writeGuild (id, obj) {
+    return new Promise (function (res, rej) {
+      guilds.findOne({ _id: id }, function (e, d) {
+        if (e) return rej(e)
+        if (!d) return rej("Guild not found. You should check if the user exists before trying edit it, stupid.")
+        d = obj
+        d.save()
+        return res(true)
       });
     });
   }

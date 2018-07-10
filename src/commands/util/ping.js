@@ -30,7 +30,7 @@ module.exports = class PingCommand extends Command {
       msg.client.shard.broadcastEval("this.users.size").then(rrrr => {
         var string = []
         for (var i = 0; i < r.length; i++) {
-          string.push("Shard "+ parseInt(parseInt(rrr[i]) + parseInt(1)) +": "+ Math.round(r[i]) +"ms, "+ rr[i] +" guilds, "+ rrrr[i] +" users.")
+          string.push("Shard "+ parseInt(parseInt(rrr[i])) +": "+ Math.round(r[i]) +"ms, "+ rr[i] +" guilds, "+ rrrr[i] +" users.")
         }
         return msg.channel.send("```"+ string.join("\n") +"```")
       });

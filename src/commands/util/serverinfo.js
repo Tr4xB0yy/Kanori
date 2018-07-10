@@ -23,6 +23,11 @@ class ServerInfoCommand extends Command {
       }
       cleanRoles.push(roles[i].name)
     }
+    var features = msg.guild.features
+    if (!features[0]) features = "No features..."
+    else features = features.join(', ')
+    var veri = msg.guild.verificationLevel
+    if (!veri) veri = "No verification."
     var embed = new RichEmbed ()
     .setTitle(msg.guild.name +"'s info")
     .setThumbnail(msg.guild.iconURL)
@@ -30,7 +35,10 @@ class ServerInfoCommand extends Command {
     .addField("Guild ID", msg.guild.id)
     .addField("Joined at", msg.guild.createdAt)
     .addField("I joined here at", msg.member.joinedAt)
+    .addField("Owner", "`"+ msg.guild.owner.user.tag +"`")
+    .addField("Features", features)
     .addField("Member count", msg.guild.members.size)
+    .addField("Verification Level", veri)
     .addField("Roles in this server", "```"+ cleanRoles.join(', ') +"```")
     return msg.channel.send(embed);
   }
