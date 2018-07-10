@@ -20,7 +20,7 @@
     "express": "^4.16.0",
     "weather-js": "^2.0.0",
     "google-translate-api": "^2.3.0",
-    "mongodb": "^2.2",
+    "mongodb": "^3.1",
     "commando-provider-mongo": "^1.0.0",
     "dblapi.js": "^2.1.0",
     "listcord": "^1.0.0",
