@@ -1,5 +1,6 @@
 exports.run = async (oldmsg, msg) => {
   msg.content = msg.content.toLowerCase()
+  oldmsg.content = oldmsg.content.toLowerCase()
   var guildConf = await msg.client.db.getGuild(msg.guild.id)
   if (guildConf.bwf.length > 0) {
     var alreadycheck = []

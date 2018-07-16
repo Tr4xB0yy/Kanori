@@ -17,13 +17,29 @@ var userSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  nextMoney: {
+    type: String,
+    default: "bypassMe"
+  },
   rep: {
     type: Number,
     default: 0
   },
+  nextRep: {
+    type: String,
+    default: "bypassMe"
+  },
   sobremim: {
     type: String,
-    default: "Change this text using @Kanori aboutme. It's so easy men.."
+    default: "Change this text using @Kanori aboutme."
+  },
+  background: {
+    type: String,
+    default: "https://cdn.discordapp.com/attachments/446298803566542869/466264652087558165/IMG_20180625_224435.jpg"
+  },
+  marry: {
+    type: String,
+    default: 'not'
   },
   banned: {
     type: Boolean,
@@ -47,7 +63,15 @@ var serverSchema = new mongoose.Schema({
   _id: {
     type: String
   },
+  lang: {
+    type: String,
+    default: "en"
+  },
   bwf: {
+    type: Array,
+    default: []
+  },
+  shop: { 
     type: Array,
     default: []
   }

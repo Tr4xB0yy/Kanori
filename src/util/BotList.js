@@ -31,6 +31,7 @@ class BotList {
     this.dbl.on('posted', () => {
       console.log("Posted stats to DBL.");
     });
+    client.dbl = this.dbl
     // BOTSPW area
     
     

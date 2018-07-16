@@ -2,8 +2,7 @@ var { createCanvas, loadImage, Image, registerFont } = require('canvas');
 
 var { get } = require('snekfetch');
 var fs = require('fs');
-require('./CanvasUtils')
-
+require('./CanvasUtils').loadHelper()
 var textApply = (canvas, text, tamanho, font, type, tamanh) => {
   var size = tamanh;
   if (!type) type = "";
@@ -30,7 +29,7 @@ const wrapText = (ctx, text, x, y, maxWidth, lineHeight) => {
       if (testWidth > maxWidth) {
         lines.push({ text: line, x: x, y: y });
         line = words[n] + ' ';
-        y += lineHeight;
+        y += 10
       } else {
         line = testLine;
       }
@@ -76,7 +75,7 @@ let falso
 let xvideos
 let treta
 let praia
-
+let pfpr
 class CanvasCommands {
   static async loadResources () {
     registerFont('./src/fonts/Chivo_Black.ttf', { family: "Chivo Black" });
@@ -96,6 +95,7 @@ class CanvasCommands {
       google = fs.readFileSync('/app/.data/google.jpg', function (e) {});
       xvideos = fs.readFileSync('/app/.data/xvideos.jpg', function (e) {});
       circuloBuffer = fs.readFileSync('/app/.data/circulo.jpg', function (e) {});
+      pfpr = fs.readFileSync('/app/.data/profile.png', function (e) {});
       console.log("Buffers loaded.");
     } catch (e) {
       console.error("barai", e);
@@ -115,6 +115,31 @@ class CanvasCommands {
     
     return camelo.toBuffer()
   }
+  static async pfp (usr, usrDb) {
+    var canvas = createCanvas(377, 102)
+    var ctx = canvas.getContext('2d')
+    var { body: usrBuffer } = await get(usr.displayAvatarURL)
+    var img = await loadImage(usrBuffer)
+    var { body: bgb } = await get(usrDb.background)
+    var bg = await loadImage(bgb)
+    var pfp = await loadImage(pfpr)
+    ctx.drawImage(bg, 0, 0)
+    ctx.drawImage(pfp, 0, 0)
+    ctx.font = '10px "Coolvetica"'
+    var linhas = wrapText(ctx, usrDb.sobremim, 244, 28, 150, 35)
+    drawWrappedText(ctx, linhas)
+    ctx.font = textApply(canvas, usr.username, 136, "Roboto", "Regular", 15)
+    ctx.fillStyle = "#000000"
+    ctx.fillText(usr.username, 22, 14)
+    ctx.font = '30px "Coolvetica"'
+    ctx.fillText("Balance", 34, 90)
+    ctx.font = '30px "Coolvetica"'
+    ctx.fillText(usrDb.money, 53, 68)
+    
+    ctx.roundImage(img, 139, 1, 101, 100)
+    
+    return canvas.toBuffer()
+  }
   static async weather (obj) {
     var img = createCanvas(1920, 1080)
     var ctx = img.getContext('2d')
@@ -122,7 +147,7 @@ class CanvasCommands {
     ctx.drawImage(praia, 0, 0)
     ctx.font = '400px "Coolvetica"'
     ctx.fillStyle = "#000000"
-    ctx.fillText(obj.current.temperature, 1250, 950)
+    ctx.filText(obj.current.temperature, 1250, 950)
     
     ctx.font = '90px "Coolvetica"'
     ctx.fillText(obj.location.degreetype +"°", 1623, 770)
