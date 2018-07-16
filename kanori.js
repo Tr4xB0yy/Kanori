@@ -21,8 +21,10 @@ var client = new Client({
   commandPrefix: "k.",
   unknownCommandResponse: false,
   disableEveryone: true,
+  autoReconnect: true,
   disabledEvents: ["TYPING_START", "TYPING_STOP"]
 });
+
 client.setProvider(MongoClient.connect(process.env.MONGOURI).then(cliente => new MongoDBProvider(cliente, "kanori"))).catch(console.error);
 
 client.login(process.env.TOKEN)
@@ -31,7 +33,8 @@ client.registry.registerGroups([
   ['moderation', 'Moderation'],
   ['fun', 'Funny'],
   ['test', 'Testing'],
-  ['misc', 'Misc']
+  ['misc', 'Misc'],
+  ['social', 'Social']
 ]).registerDefaultTypes()
   .registerDefaultGroups()
   .registerDefaultCommands({ 'ping': false, 'reload': false, 'help': false})

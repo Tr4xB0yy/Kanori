@@ -16,4 +16,6 @@ exports.run = async (client) => {
   client.db = database
   console.log("Posting stats to DBL and Listcord");
   var botlistClient = new botlist({ client: client });
+  // exporting db to our login router
+  exports.db = database
 }

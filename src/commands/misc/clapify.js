@@ -1,7 +1,7 @@
 const { Command } = require("discord.js-commando");
 
 const clapifyer = function(string) {
-    var array = string.split(" ")
+    var array = string.split("")
     return array.join(" 👏 ");
 }
 

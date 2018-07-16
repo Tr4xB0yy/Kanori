@@ -37,7 +37,8 @@ class ServerInfoCommand extends Command {
     .addField("I joined here at", msg.member.joinedAt)
     .addField("Owner", "`"+ msg.guild.owner.user.tag +"`")
     .addField("Features", features)
-    .addField("Member count", msg.guild.members.size)
+    .addField("Members", "🤖 Robots: "+ msg.guild.members.filter(m => m.user.bot).size +", 🙋 Humans: "+ msg.guild.members.filter(m => !m.user.bot).size +"\n<:online:438399398808911882> Online: "+ msg.guild.members.filter(m => m.presence.status == "online").size +"\n<:idle:438399398796460032> Idle: "+ msg.guild.members.filter(g => g.presence.status == "idle").size +"\n<:dnd:438399396548313091> DND: "+ msg.guild.members.filter(a => a.presence.status == "dnd").size +"\n<:offline:438399398762905600> Offline: "+ msg.guild.members.filter(o => o.presence.status == "offline").size)
+    .addField("Channels", "📓 Text channels: "+ msg.guild.channels.filter(m => m.type == "text").size + "\n🎤 Voice channels: "+ msg.guild.channels.filter(m => m.type == "voice").size +"\n🎒 Category count: "+ msg.guild.channels.filter(j => j.type == "category").size)
     .addField("Verification Level", veri)
     .addField("Roles in this server", "```"+ cleanRoles.join(', ') +"```")
     return msg.channel.send(embed);
