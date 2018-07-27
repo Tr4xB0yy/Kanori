@@ -29,7 +29,7 @@
     "triggered-module-api": "^0.1.1",
     "mongoose": "^5.2.1",
     "btoa": "^1.2.1",
-    "node-fetch": "^2.1.2",
+    "node-fetch": "^2.2.0",
     "zlib-sync": "^0.1.4",
     "uws": "^10.148.1",
     "bufferutil": "^4.0.0",
