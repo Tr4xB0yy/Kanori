@@ -21,7 +21,7 @@
     "npm-api-util": "1.0.1",
     "google-translate-api": "^2.3.0",
     "mongodb": "^2.2",
-    "commando-provider-mongo": "^1.0.0",
+    "commando-provider-mongo": "^1.1.1",
     "dblapi.js": "^2.1.0",
     "listcord": "^1.0.0",
     "os-utils": "^0.0.14",
